@@ -4,7 +4,7 @@ import {theme} from '../../themes/theme';
 
 const StyledScreenView = styled(View)`
   ${() => ({
-    backgroundColor: theme.colors.darkGrey,
+    backgroundColor: theme.colors.white,
     height: '100%',
     width: '100%',
   })}
