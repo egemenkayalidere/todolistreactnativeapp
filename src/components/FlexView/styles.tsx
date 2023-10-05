@@ -12,6 +12,7 @@ const StyledFlexView = styled(View)<{
     justifyContent,
     alignItems,
     paddingHorizontal,
+    width: '100%',
   })}
 `;
 

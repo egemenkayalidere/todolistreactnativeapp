@@ -18,7 +18,11 @@ export const AuthNavigator = () => {
             component={Onboarding}
             name={AuthPaths.Onboarding}
           />
-          <AuthStack.Screen component={Login} name={AuthPaths.Login} />
+          <AuthStack.Screen
+            options={{gestureEnabled: false}}
+            component={Login}
+            name={AuthPaths.Login}
+          />
           <AuthStack.Screen component={Register} name={AuthPaths.Register} />
         </AuthStack.Group>
       </AuthStack.Navigator>
