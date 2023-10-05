@@ -1,4 +1,16 @@
 export enum Texts {
   on_boarding_title = 'Welcome to My To Do App',
   on_boarding_description = 'This is a to do list app for Marta.de Company as an assessment.',
+  on_boarding_button = "Let's Start",
+  login_title = 'Login',
+  login_description = 'Login to continue using the app',
+  login_forgot_password = 'Forgot Password ?',
+  login_button = 'Login',
+  register_button = 'Register',
+  email_check = '* Invalid Email',
+  email_required = '* Email is required',
+  password_check = '* Password should be at least 8 characters',
+  password_required = '* Password is required',
+  login_enter_email = 'Enter your email',
+  login_enter_pass = 'Enter your password',
 }

@@ -32,96 +32,32 @@ const lineHeights = {
 };
 
 const typography = {
-  h1: {
-    fontSize: fontSizes['48'],
-    lineHeight: lineHeights['56'],
-    fontFamily: fontFamilies.bold,
-  },
-  h2: {
-    fontSize: fontSizes['30'],
-    lineHeight: lineHeights['36'],
-    fontFamily: fontFamilies.bold,
-  },
-  h3: {
-    fontSize: fontSizes['30'],
-    lineHeight: lineHeights['36'],
-    fontFamily: fontFamilies.regular,
-  },
-  h4: {
-    fontSize: fontSizes['24'],
-    lineHeight: lineHeights['28'],
-    fontFamily: fontFamilies.bold,
-  },
-  h5: {
-    fontSize: fontSizes['24'],
-    lineHeight: lineHeights['28'],
-    fontFamily: fontFamilies.regular,
-  },
-  h6: {
-    fontSize: fontSizes['30'],
-    lineHeight: lineHeights['36'],
-    fontFamily: fontFamilies.medium,
-  },
   title1: {
     fontSize: fontSizes['20'],
-    lineHeight: lineHeights['24'],
-    fontFamily: fontFamilies.bold,
+    lineHeight: lineHeights['20'],
     fontWeight: 'bold',
+    fontFamily: fontFamilies.regular,
   },
   title2: {
     fontSize: fontSizes['18'],
-    lineHeight: lineHeights['22'],
-    fontFamily: fontFamilies.bold,
-  },
-  title3: {
-    fontSize: fontSizes['18'],
-    lineHeight: lineHeights['22'],
+    lineHeight: lineHeights['20'],
     fontFamily: fontFamilies.regular,
   },
   body1: {
     fontSize: fontSizes['16'],
     lineHeight: lineHeights['20'],
-    fontFamily: fontFamilies.bold,
+    fontFamily: fontFamilies.regular,
   },
   body2: {
     fontSize: fontSizes['16'],
     lineHeight: lineHeights['20'],
-    fontFamily: fontFamilies.semiBold,
+    fontFamily: fontFamilies.regular,
   },
-  body3: {
-    fontSize: fontSizes['16'],
+  button1: {
+    fontSize: fontSizes['14'],
     lineHeight: lineHeights['20'],
+    fontWeight: 'bold',
     fontFamily: fontFamilies.regular,
-  },
-  body4: {
-    fontSize: fontSizes['14'],
-    lineHeight: lineHeights['18'],
-    fontFamily: fontFamilies.bold,
-  },
-  body5: {
-    fontSize: fontSizes['14'],
-    lineHeight: lineHeights['22'],
-    fontFamily: fontFamilies.medium,
-  },
-  body6: {
-    fontSize: fontSizes['14'],
-    lineHeight: lineHeights['22'],
-    fontFamily: fontFamilies.regular,
-  },
-  footNoteBold: {
-    fontSize: fontSizes['12'],
-    lineHeight: lineHeights['16'],
-    fontFamily: fontFamilies.bold,
-  },
-  footNoteRegular: {
-    fontSize: fontSizes['12'],
-    lineHeight: lineHeights['16'],
-    fontFamily: fontFamilies.regular,
-  },
-  footNoteMedium: {
-    fontSize: fontSizes['12'],
-    lineHeight: lineHeights['14'],
-    fontFamily: fontFamilies.medium,
   },
 };
 

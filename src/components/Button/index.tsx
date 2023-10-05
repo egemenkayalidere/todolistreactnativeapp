@@ -1,36 +1,32 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {FC} from 'react';
-import {TouchableOpacity, Text} from 'react-native';
+import {ButtonProps} from './types';
+import StyledButton from './styles';
+import Text from '../Text';
 
-const Button: FC<{
-  width: number;
-  height: number;
-  borderRadius: number;
-  backgroundColor: string;
-  textColor: string;
-  fontWeight: any;
-  text: string;
-}> = ({
+const Button: FC<ButtonProps> = ({
   width,
   height,
   borderRadius,
   backgroundColor,
   textColor,
-  fontWeight,
   text,
+  variant,
+  marginBottom,
+  marginTop,
+  onPress,
 }) => {
   return (
-    <TouchableOpacity
-      style={{
-        backgroundColor,
-        width,
-        height,
-        borderRadius,
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
-      <Text style={{color: textColor, fontWeight}}>{text}</Text>
-    </TouchableOpacity>
+    <StyledButton
+      onPress={onPress}
+      width={width}
+      height={height}
+      borderRadius={borderRadius}
+      backgroundColor={backgroundColor}
+      marginBottom={marginBottom}
+      marginTop={marginTop}>
+      <Text color={textColor} label={text} variant={variant} />
+    </StyledButton>
   );
 };
 

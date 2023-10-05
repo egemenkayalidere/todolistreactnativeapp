@@ -9,8 +9,12 @@ import LinearGradient from 'react-native-linear-gradient';
 import Text from '../../../components/Text';
 import {Texts} from '../../../common/enums';
 import FlexView from '../../../components/FlexView';
+import {useNavigation} from '@react-navigation/native';
+import {AuthPaths} from '../../../navigation/paths/auth.paths';
 
 const Onboarding = () => {
+  const {navigate} = useNavigation();
+  const onPress_LetsStart = () => navigate(AuthPaths.Login as never);
   return (
     <ScreenView>
       <StatusBar hidden />
@@ -21,6 +25,8 @@ const Onboarding = () => {
           <LottieView
             style={{width: '100%', height: '100%'}}
             source={require('./../../../assets/lottie-files/todo-animation.json')}
+            autoPlay
+            loop
           />
         </FlexView>
         <FlexView flex={0.3} alignItems="center" pH={48}>
@@ -38,13 +44,14 @@ const Onboarding = () => {
         </FlexView>
         <FlexView flex={0.2} justifyContent="center" alignItems="center">
           <Button
+            onPress={onPress_LetsStart}
             width={350}
             height={50}
             borderRadius={12}
             backgroundColor={theme.colors.primary}
-            textColor={theme.colors.white}
-            fontWeight={'bold'}
-            text={"Let's Start"}
+            textColor={'white'}
+            text={Texts.on_boarding_button}
+            variant={'button1'}
           />
         </FlexView>
       </LinearGradient>

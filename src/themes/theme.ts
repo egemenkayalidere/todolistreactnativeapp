@@ -13,7 +13,7 @@ import typography from './typography';
 
 const colors = {
   primary: '#11A09A',
-  supportive: '#A0CBED',
+  secondary: '#FE7A7B',
   white: '#FFFFFF',
   grey: '#F4F4F4',
   lightGrey: '#E9E9E9',
