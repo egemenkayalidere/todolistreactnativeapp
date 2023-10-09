@@ -16,14 +16,15 @@ import useFirebaseFirestore from '../../../hooks/useFirebaseFirestore';
 import useFirebaseAuth from '../../../hooks/useFirebaseAuth';
 import calendarStore from '../../../state/calendarStore';
 import Calendar from '../../../components/Calendar';
+import Toast from 'react-native-toast-message';
 
 const CreateTask = () => {
   const theme = useTheme();
   const {navigate} = useNavigation();
   const {addItem} = useFirebaseFirestore();
   const {user} = useFirebaseAuth();
-  const [title, setTitle] = useState<string>('title');
-  const [description, setDescription] = useState<string>('description');
+  const [title, setTitle] = useState<string>('');
+  const [description, setDescription] = useState<string>('');
   const [priority, setPriority] = useState<number>(1);
   const {selectedCalendarDate} = calendarStore();
   return (
@@ -170,7 +171,15 @@ const CreateTask = () => {
             bottom={50}
             alignSelf="center">
             <Button
-              onPress={() =>
+              onPress={() => {
+                if (!title || !description) {
+                  Toast.show({
+                    type: 'error',
+                    text1: 'Error',
+                    text2: 'Fill all the fields',
+                  });
+                  return;
+                }
                 addItem({
                   key: new Date().toString(),
                   uId: user?.uid ?? 'uid',
@@ -179,8 +188,8 @@ const CreateTask = () => {
                   priority,
                   isCompleted: false,
                   date: selectedCalendarDate.toString(),
-                })
-              }
+                });
+              }}
               width={'100%'}
               height={55}
               borderRadius={12}
