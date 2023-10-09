@@ -20,15 +20,19 @@ import {Formik} from 'formik';
 import * as Yup from 'yup';
 import TextInput from '../../../components/TextInput';
 import View from '../../../components/View';
+import {useNavigation} from '@react-navigation/native';
+import useFirebaseAuth from '../../../hooks/useFirebaseAuth';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email(Texts.email_check).required(Texts.email_required),
   password: Yup.string()
-    .min(8, Texts.password_check)
+    .min(6, Texts.password_check)
     .required(Texts.password_required),
 });
 
 const Login = () => {
+  const {navigate} = useNavigation();
+  const {signIn, initializing, setInitializing} = useFirebaseAuth();
   const [showPass, setShowPass] = useState<boolean>(false);
   const source = showPass
     ? require('./../../../assets/images/show-pass.png')
@@ -52,7 +56,7 @@ const Login = () => {
           <ScrollView
             scrollEnabled={false}
             style={{flex: 1, width: '100%'}}
-            keyboardShouldPersistTaps="handled">
+            keyboardShouldPersistTaps="always">
             <FlexView flex={0.4} alignItems="left" pH={24}>
               <Text label={Texts.login_title} variant="title1" />
               <Text label={Texts.login_description} variant="body1" />
@@ -60,8 +64,8 @@ const Login = () => {
               <Formik
                 initialValues={{email: '', password: ''}}
                 validationSchema={validationSchema}
-                validateOnChange={false}
-                validateOnBlur={false}
+                validateOnChange={true}
+                validateOnBlur={true}
                 onSubmit={values => console.log(values)}>
                 {({handleChange, handleBlur, handleSubmit, values, errors}) => (
                   <>
@@ -102,12 +106,17 @@ const Login = () => {
                       {errors.password && <RNText>{errors.password}</RNText>}
                     </View>
                     <Button
+                      disabled={initializing}
                       onPress={() => {
                         handleSubmit();
                         if (Object.keys(errors).length > 0) {
                           console.log('Has some errors');
-                        } else {
-                          console.log('No error');
+                          return;
+                        }
+                        if (values.email !== '' && values.password !== '') {
+                          setInitializing(true);
+                          signIn(values.email, values.password);
+                          return;
                         }
                       }}
                       width={'100%'}
@@ -119,17 +128,20 @@ const Login = () => {
                       variant={'button1'}
                       marginTop={12}
                     />
-                    <Button
-                      onPress={() => {}}
-                      width={'100%'}
-                      height={55}
-                      borderRadius={12}
-                      backgroundColor={theme.colors.secondary}
-                      textColor={'white'}
-                      text={Texts.register_button}
-                      variant={'button1'}
-                      marginTop={24}
-                    />
+                    <View
+                      bottom={-50}
+                      position="relative"
+                      height={50}
+                      flexDirection="row"
+                      width={'100%'}>
+                      <Text label={Texts.login_not_have_acc} variant="body2" />
+                      <Pressable onPress={() => navigate('Register' as never)}>
+                        <Text
+                          label={Texts.login_create_acc}
+                          variant="body2Bold"
+                        />
+                      </Pressable>
+                    </View>
                   </>
                 )}
               </Formik>

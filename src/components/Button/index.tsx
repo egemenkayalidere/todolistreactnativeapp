@@ -15,9 +15,13 @@ const Button: FC<ButtonProps> = ({
   marginBottom,
   marginTop,
   onPress,
+  disabled,
+  opacity,
 }) => {
   return (
     <StyledButton
+      opacity={opacity}
+      disabled={disabled}
       onPress={onPress}
       width={width}
       height={height}

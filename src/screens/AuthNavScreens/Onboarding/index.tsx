@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import ScreenView from '../../../components/ScreenView';
-import {StatusBar} from 'react-native';
+import {ActivityIndicator, StatusBar} from 'react-native';
 import LottieView from 'lottie-react-native';
 import {theme} from '../../../themes/theme';
 import Button from '../../../components/Button';
@@ -11,10 +11,19 @@ import {Texts} from '../../../common/enums';
 import FlexView from '../../../components/FlexView';
 import {useNavigation} from '@react-navigation/native';
 import {AuthPaths} from '../../../navigation/paths/auth.paths';
+import useFirebaseAuth from '../../../hooks/useFirebaseAuth';
 
 const Onboarding = () => {
   const {navigate} = useNavigation();
   const onPress_LetsStart = () => navigate(AuthPaths.Login as never);
+  const {initializing} = useFirebaseAuth();
+  if (initializing) {
+    return (
+      <FlexView flex={1} justifyContent="center" alignItems="center">
+        <ActivityIndicator color={'black'} />
+      </FlexView>
+    );
+  }
   return (
     <ScreenView>
       <StatusBar hidden />

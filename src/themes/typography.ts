@@ -9,6 +9,7 @@ const fontFamilies = {
 
 const fontSizes = {
   '48': normalizeSize(48),
+  '36': normalizeSize(36),
   '30': normalizeSize(30),
   '24': normalizeSize(24),
   '20': normalizeSize(20),
@@ -32,6 +33,12 @@ const lineHeights = {
 };
 
 const typography = {
+  welcomeText: {
+    fontSize: fontSizes['36'],
+    lineHeight: lineHeights['36'],
+    fontWeight: 'bold',
+    fontFamily: fontFamilies.regular,
+  },
   title1: {
     fontSize: fontSizes['20'],
     lineHeight: lineHeights['20'],
@@ -43,15 +50,33 @@ const typography = {
     lineHeight: lineHeights['20'],
     fontFamily: fontFamilies.regular,
   },
+  title2Bold: {
+    fontSize: fontSizes['14'],
+    lineHeight: lineHeights['20'],
+    fontFamily: fontFamilies.regular,
+    fontWeight: 'bold',
+  },
+  title3: {
+    fontSize: fontSizes['14'],
+    lineHeight: lineHeights['20'],
+    fontFamily: fontFamilies.regular,
+    fontWeight: 'bold',
+  },
   body1: {
-    fontSize: fontSizes['16'],
+    fontSize: fontSizes['14'],
     lineHeight: lineHeights['20'],
     fontFamily: fontFamilies.regular,
   },
   body2: {
-    fontSize: fontSizes['16'],
+    fontSize: fontSizes['12'],
     lineHeight: lineHeights['20'],
     fontFamily: fontFamilies.regular,
+  },
+  body2Bold: {
+    fontSize: fontSizes['12'],
+    lineHeight: lineHeights['20'],
+    fontFamily: fontFamilies.regular,
+    fontWeight: 'bold',
   },
   button1: {
     fontSize: fontSizes['14'],

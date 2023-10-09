@@ -1,3 +1,4 @@
 export enum AppPaths {
-  Tab = 'Tabs',
+  Home = 'Tabs',
+  CreateTask = 'Create Task',
 }
