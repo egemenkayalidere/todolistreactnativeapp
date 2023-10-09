@@ -5,7 +5,8 @@ import {StatusBar, View} from 'react-native';
 import {ThemeProvider} from 'styled-components/native';
 import {theme} from './themes/theme';
 import {ErrorBoundary} from 'react-error-boundary';
-import {AuthNavigator} from './navigation/AuthNavigator';
+import {RootNavigator} from './navigation';
+import Toast from 'react-native-toast-message';
 
 const App = () => {
   return (
@@ -13,9 +14,10 @@ const App = () => {
       <StatusBar />
       <ThemeProvider theme={theme}>
         <ErrorBoundary FallbackComponent={() => <View />}>
-          <AuthNavigator />
+          <RootNavigator />
         </ErrorBoundary>
       </ThemeProvider>
+      <Toast />
     </SafeAreaProvider>
   );
 };

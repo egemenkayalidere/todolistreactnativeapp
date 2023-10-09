@@ -3,10 +3,11 @@ import styled from 'styled-components';
 import {ViewProps} from './types';
 
 export const StyledView = styled(View)<ViewProps>`
-  ${({height, width}) => ({
+  ${({height, width, justifyContent, alignItems, paddingVertical}) => ({
     height,
     width,
-    justifyContent: 'center',
-    alignItems: 'left',
+    justifyContent: justifyContent || 'center',
+    alignItems,
+    paddingVertical,
   })}
 `;

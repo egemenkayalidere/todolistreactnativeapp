@@ -8,9 +8,15 @@ const TextInput: FC<TextInputProps> = ({
   value,
   placeholder,
   secureTextEntry,
+  multiline,
+  numberOfLines,
+  height,
+  backgroundColor,
 }) => {
   return (
     <StyledTextInput
+      backgroundColor={backgroundColor}
+      height={height}
       autoCapitalize="none"
       autoCorrect={false}
       onChangeText={onChangeText}
@@ -18,6 +24,8 @@ const TextInput: FC<TextInputProps> = ({
       value={value}
       placeholder={placeholder}
       secureTextEntry={secureTextEntry}
+      multiline={multiline}
+      numberOfLines={numberOfLines}
     />
   );
 };

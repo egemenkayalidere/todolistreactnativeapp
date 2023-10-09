@@ -7,4 +7,5 @@ export interface TextProps {
   variant: TypographyKeys;
   label: string;
   style?: TextStyle;
+  textDecorationLine?: string;
 }

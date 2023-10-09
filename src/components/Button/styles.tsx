@@ -10,7 +10,9 @@ const StyledButton = styled(TouchableOpacity)<ButtonProps>`
     borderRadius,
     marginBottom,
     marginTop,
+    opacity,
   }) => ({
+    opacity,
     backgroundColor,
     marginBottom,
     marginTop,

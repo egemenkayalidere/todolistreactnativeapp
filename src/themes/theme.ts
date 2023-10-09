@@ -23,7 +23,7 @@ const colors = {
   error: '#FF445A',
   warning: '#FFB200',
   info: '#879BFF',
-  overlay: 'rgba(45, 45, 45, .6)',
+  overlay: 'rgba(255, 255, 255, .6)',
   placeholder: '#BFBFBF',
 };
 

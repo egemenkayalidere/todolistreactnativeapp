@@ -3,10 +3,10 @@ import styled from 'styled-components/native';
 import {TextInputProps} from './types';
 
 const StyledTextInput = styled(TextInput)<TextInputProps>`
-  ${({theme}) => ({
-    backgroundColor: theme.colors.lightGrey,
+  ${({height, backgroundColor}) => ({
+    backgroundColor: backgroundColor ?? 'white',
     width: '100%',
-    height: 55,
+    height: height ?? 55,
     borderRadius: 12,
     paddingLeft: 12,
   })}

@@ -11,4 +11,6 @@ export interface ButtonProps {
   variant: TypographyKeys;
   marginTop?: number;
   onPress: () => void;
+  disabled?: boolean;
+  opacity?: number;
 }
