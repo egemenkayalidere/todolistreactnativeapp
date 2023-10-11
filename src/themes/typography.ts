@@ -22,6 +22,7 @@ const fontSizes = {
 const lineHeights = {
   '56': `${normalizeSize(56)}px`,
   '36': `${normalizeSize(36)}px`,
+  '30': `${normalizeSize(30)}px`,
   '28': `${normalizeSize(28)}px`,
   '24': `${normalizeSize(24)}px`,
   '22': `${normalizeSize(22)}px`,
@@ -34,8 +35,14 @@ const lineHeights = {
 
 const typography = {
   welcomeText: {
-    fontSize: fontSizes['36'],
-    lineHeight: lineHeights['36'],
+    fontSize: fontSizes['30'],
+    lineHeight: lineHeights['30'],
+    fontWeight: 'bold',
+    fontFamily: fontFamilies.regular,
+  },
+  welcomeText2: {
+    fontSize: fontSizes['30'],
+    lineHeight: lineHeights['30'],
     fontWeight: 'bold',
     fontFamily: fontFamilies.regular,
   },

@@ -33,7 +33,7 @@ import useFirebaseFirestore from '../../../hooks/useFirebaseFirestore';
 
 const Home = () => {
   const {selectedCalendarDate, setCalendarDate} = calendarStore();
-  const {signOut} = useFirebaseAuth();
+  const {signOut, user} = useFirebaseAuth();
   const {navigate} = useNavigation();
   const {deleteItem} = useFirebaseFirestore();
 
@@ -59,6 +59,7 @@ const Home = () => {
       </TouchableOpacity>
     </RNView>
   );
+
   return (
     <ScreenView>
       <StatusBar barStyle={'dark-content'} />
@@ -74,7 +75,7 @@ const Home = () => {
             flexDirection="row">
             <View>
               <Text label={Texts.home_welcome} variant="welcomeText" />
-              <Text label={'Marta'} variant="welcomeText" />
+              <Text label={user?.email.split('@')[0]} variant="welcomeText2" />
               <Text
                 label={Texts.home_today_is + humanFriendlyDate()}
                 variant="body1"
