@@ -26,7 +26,7 @@ import useFirebaseAuth from '../../../hooks/useFirebaseAuth';
 const validationSchema = Yup.object().shape({
   email: Yup.string().email(Texts.email_check).required(Texts.email_required),
   password: Yup.string()
-    .min(6, Texts.password_check)
+    .min(8, Texts.password_check)
     .required(Texts.password_required),
 });
 
@@ -66,7 +66,10 @@ const Login = () => {
                 validationSchema={validationSchema}
                 validateOnChange={true}
                 validateOnBlur={true}
-                onSubmit={values => console.log(values)}>
+                onSubmit={values => {
+                  setInitializing(true);
+                  console.log(values);
+                }}>
                 {({handleChange, handleBlur, handleSubmit, values, errors}) => (
                   <>
                     <TextInput
@@ -106,18 +109,20 @@ const Login = () => {
                       {errors.password && <RNText>{errors.password}</RNText>}
                     </View>
                     <Button
-                      disabled={initializing}
+                      disabled={initializing || Object.keys(errors).length > 0}
                       onPress={() => {
+                        console.log(
+                          'Object.keys(errors).length',
+                          Object.keys(errors).length,
+                        );
                         handleSubmit();
-                        if (Object.keys(errors).length > 0) {
-                          console.log('Has some errors');
-                          return;
-                        }
-                        if (values.email !== '' && values.password !== '') {
-                          setInitializing(true);
-                          signIn(values.email, values.password);
-                          return;
-                        }
+                        setTimeout(() => {
+                          if (values.email !== '' && values.password !== '') {
+                            signIn(values.email, values.password);
+                            setInitializing(false);
+                            return;
+                          }
+                        }, 1000);
                       }}
                       width={'100%'}
                       height={55}
@@ -127,6 +132,9 @@ const Login = () => {
                       text={Texts.login_button}
                       variant={'button1'}
                       marginTop={12}
+                      opacity={
+                        initializing || Object.keys(errors).length > 0 ? 0.5 : 1
+                      }
                     />
                     <View
                       bottom={-50}

@@ -13,9 +13,7 @@ const useFirebaseAuth = () => {
 
   const onAuthStateChanged = currentUser => {
     setUser(currentUser);
-    setTimeout(() => {
-      setInitializing(false);
-    }, 3000);
+    setInitializing(false);
   };
 
   useEffect(() => {
@@ -60,9 +58,7 @@ const useFirebaseAuth = () => {
       console.error('Error registering:', error);
       throw error;
     } finally {
-      setTimeout(() => {
-        setInitializing(false);
-      }, 2000);
+      setInitializing(false);
     }
   };
 
@@ -92,9 +88,7 @@ const useFirebaseAuth = () => {
       });
       throw error;
     } finally {
-      setTimeout(() => {
-        setInitializing(false);
-      }, 2000);
+      setInitializing(false);
     }
   };
 
