@@ -7,8 +7,25 @@ import {theme} from './themes/theme';
 import {ErrorBoundary} from 'react-error-boundary';
 import {RootNavigator} from './navigation';
 import Toast from 'react-native-toast-message';
+import SplashScreen from 'react-native-splash-screen';
+import {useEffect} from 'react';
+import NetInfo from '@react-native-community/netinfo';
 
 const App = () => {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
+  useEffect(() => {
+    // Subscribe to network state updates
+    const unsubscribe = NetInfo.addEventListener(state => {
+      global.internetConnection = state;
+    });
+
+    // Unsubscribe to avoid memory leaks
+    return () => {
+      unsubscribe();
+    };
+  }, []);
   return (
     <SafeAreaProvider>
       <StatusBar />

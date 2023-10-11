@@ -509,6 +509,8 @@
 				DEVELOPMENT_TEAM = 595RR4VW27;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ToDoListReactNativeApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "To Do Check";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -543,6 +545,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 595RR4VW27;
 				INFOPLIST_FILE = ToDoListReactNativeApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "To Do Check";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -648,6 +652,8 @@
 					"-ld_classic",
 					"-Wl",
 					"-ld_classic",
+					"-Wl",
+					"-ld_classic",
 					"-Wl -ld_classic ",
 				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
@@ -729,6 +735,8 @@
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
+					"-Wl",
+					"-ld_classic",
 					"-Wl",
 					"-ld_classic",
 					"-Wl",

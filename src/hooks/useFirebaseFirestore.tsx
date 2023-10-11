@@ -53,6 +53,7 @@ const useFirebaseFirestore = () => {
   };
 
   const addItem = (item: ItemType) => {
+    console.log('global.internetConnection', global.internetConnection);
     firestore()
       .collection('todo-list')
       .add(item)
@@ -60,6 +61,13 @@ const useFirebaseFirestore = () => {
         console.log('Item added!');
         navigate('Home' as never);
       });
+
+    if (
+      !global.internetConnection.isConnected ||
+      !global.internetConnection.isInternetReachable
+    ) {
+      navigate('Home' as never);
+    }
   };
 
   const updateItem = (item: ItemType, id: string) => {

@@ -4,7 +4,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {TabNavigator} from './TabNavigator';
 import {AppPaths} from './paths/app.paths';
-import CreateTask from '../screens/TabNavScreens/CreateTask';
+import CreateTask from '../screens/AppNavScreens/CreateTask';
 
 const AppStack = createNativeStackNavigator();
 
