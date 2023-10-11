@@ -70,7 +70,14 @@ const Login = () => {
                   setInitializing(true);
                   console.log(values);
                 }}>
-                {({handleChange, handleBlur, handleSubmit, values, errors}) => (
+                {({
+                  handleChange,
+                  handleBlur,
+                  handleSubmit,
+                  touched,
+                  values,
+                  errors,
+                }) => (
                   <>
                     <TextInput
                       onChangeText={handleChange('email')}
@@ -79,7 +86,9 @@ const Login = () => {
                       placeholder={Texts.login_enter_email}
                     />
                     <View height={30} width={'100%'}>
-                      {errors.email && <RNText>{errors.email}</RNText>}
+                      {errors.email && touched.email && (
+                        <RNText>{errors.email}</RNText>
+                      )}
                     </View>
                     <View width={'100%'} flexDirection="row">
                       <TextInput
@@ -106,7 +115,9 @@ const Login = () => {
                       </Pressable>
                     </View>
                     <View height={30} width={'100%'}>
-                      {errors.password && <RNText>{errors.password}</RNText>}
+                      {errors.password && touched.email && (
+                        <RNText>{errors.password}</RNText>
+                      )}
                     </View>
                     <Button
                       disabled={initializing || Object.keys(errors).length > 0}

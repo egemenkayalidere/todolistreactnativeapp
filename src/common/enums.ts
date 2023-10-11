@@ -37,4 +37,5 @@ export enum Texts {
   success_title_registration_success = 'Registration Success',
   success_msg_registration_success = 'You are successfully registered and signed in!',
   error_title_login_failed = 'Login Failed!',
+  error_msg_wrong_credentials = 'Check your credentials!',
 }

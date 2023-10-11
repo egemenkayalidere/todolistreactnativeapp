@@ -78,14 +78,16 @@ const useFirebaseAuth = () => {
         .signInWithEmailAndPassword(email, password)
         .catch(error => {
           console.error(error);
+          if (error.code === 'auth/internal-error') {
+            Toast.show({
+              type: 'error',
+              text1: Texts.error_title_login_failed,
+              text2: Texts.error_msg_wrong_credentials,
+            });
+          }
         });
     } catch (error) {
       console.error('Error signing in:', error);
-      Toast.show({
-        type: 'error',
-        text1: Texts.error_title_login_failed,
-        text2: error.code,
-      });
       throw error;
     } finally {
       setInitializing(false);
