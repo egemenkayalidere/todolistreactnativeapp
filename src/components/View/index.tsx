@@ -20,9 +20,13 @@ const View: FC<ViewProps> = ({
   marginBottom,
   paddingHorizontal,
   alignSelf,
+  top,
+  right,
 }) => {
   return (
     <StyledView
+      top={top}
+      right={right}
       alignSelf={alignSelf}
       paddingHorizontal={paddingHorizontal}
       marginBottom={marginBottom}

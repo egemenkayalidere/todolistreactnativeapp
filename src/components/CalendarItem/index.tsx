@@ -11,18 +11,27 @@ import {
   specificMonthName,
 } from '../../utils/general.utils';
 
-const CalendarItem: FC<{item: Date}> = ({item}) => {
+export type CalendarItemType = {
+  key: number;
+  date: Date;
+  taskCount: number;
+};
+
+const CalendarItem: FC<{item: CalendarItemType}> = ({item}) => {
+  const {key, date, taskCount} = item;
   const theme = useTheme();
   const {setCalendarDate, selectedCalendarDate} = calendarStore();
-  const isSelected = item.getTime() === selectedCalendarDate.getTime();
+  const isSelected = date.getTime() === selectedCalendarDate.getTime();
+
   return (
     <Pressable
+      key={key}
       onPress={() => {
-        setCalendarDate(item);
+        setCalendarDate(date);
       }}>
       <View
         backgroundColor={theme.colors[isSelected ? 'overlay' : 'white']}
-        width={50}
+        width={55}
         height={75}
         borderRadius={12}
         justifyContent="center"
@@ -31,18 +40,31 @@ const CalendarItem: FC<{item: Date}> = ({item}) => {
         marginRight={12}>
         <Text
           label={
-            isToday(item)
+            isToday(date)
               ? 'Today'
-              : specificMonthName(item).toString().slice(0, 3)
+              : specificMonthName(date).toString().slice(0, 3)
           }
           variant="body2Bold"
-          color={isToday(item) ? 'secondary' : undefined}
+          color={isToday(date) ? 'secondary' : undefined}
         />
         <Text
-          label={specificDayName(item).toString().slice(0, 3)}
+          label={specificDayName(date).toString().slice(0, 3)}
           variant="body1"
         />
-        <Text label={specificDayNumber(item).toString()} variant="body2Bold" />
+        <Text label={specificDayNumber(date).toString()} variant="body2Bold" />
+        {taskCount > 0 && (
+          <View
+            position="absolute"
+            width={5}
+            height={5}
+            backgroundColor={theme.colors.secondary}
+            justifyContent="center"
+            borderRadius={100}
+            alignItems="center"
+            top={5}
+            right={5}
+          />
+        )}
       </View>
     </Pressable>
   );

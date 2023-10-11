@@ -5,7 +5,7 @@ import {useState, useEffect} from 'react';
 import firestore from '@react-native-firebase/firestore';
 import {useNavigation} from '@react-navigation/native';
 
-type ItemType = {
+export type ItemType = {
   key: string;
   uId: string;
   title: string;

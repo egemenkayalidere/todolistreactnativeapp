@@ -16,4 +16,6 @@ export interface ViewProps {
   marginBottom?: number;
   paddingHorizontal?: number;
   alignSelf?: string;
+  top?: number;
+  right?: number;
 }

@@ -1,4 +1,5 @@
-import React, {FC} from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, {FC, useEffect} from 'react';
 import {SwipeListView} from 'react-native-swipe-list-view';
 import calendarStore from '../../state/calendarStore';
 import FlexView from '../FlexView';
@@ -6,7 +7,7 @@ import {getTRDate} from '../../utils/general.utils';
 import {Texts} from '../../common/enums';
 import Text from '../Text';
 import useFirebaseAuth from '../../hooks/useFirebaseAuth';
-import useFirebaseFirestore from '../../hooks/useFirebaseFirestore';
+import useFirebaseFirestore, {ItemType} from '../../hooks/useFirebaseFirestore';
 
 const TasksList: FC<{
   renderItem: any;
@@ -16,17 +17,21 @@ const TasksList: FC<{
   const {user} = useFirebaseAuth();
   const {data} = useFirebaseFirestore();
   // Date filter
-  let filteredData = data?.filter((item: any) => {
-    return getTRDate(item.date).getTime() === selectedCalendarDate.getTime();
+  let filteredData = data?.filter((item: ItemType) => {
+    return (
+      getTRDate(new Date(item.date)).getTime() ===
+      selectedCalendarDate.getTime()
+    );
   });
   // User filter
-  filteredData = filteredData.filter((item: any) => {
+  filteredData = filteredData.filter((item: ItemType) => {
     return item.uId === user?.uid;
   });
   // User filter
-  filteredData = filteredData.sort((x, y) => {
+  filteredData = filteredData.sort((x: ItemType, y: ItemType) => {
     return x.priority - y.priority;
   });
+
   return filteredData.length > 0 ? (
     <SwipeListView
       showsVerticalScrollIndicator={false}
