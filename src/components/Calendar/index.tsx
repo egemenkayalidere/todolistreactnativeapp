@@ -5,6 +5,7 @@ import {FlatList} from 'react-native';
 import {getAllDatesOfYear} from '../../utils/general.utils';
 import CalendarItem, {CalendarItemType} from '../CalendarItem';
 import useFirebaseFirestore from '../../hooks/useFirebaseFirestore';
+import useFirebaseAuth from '../../hooks/useFirebaseAuth';
 
 const Calendar: FC<{flatListRef?: keyof typeof FlatList}> = ({flatListRef}) => {
   let yearDays: Array<any> = useMemo(() => {
@@ -14,9 +15,12 @@ const Calendar: FC<{flatListRef?: keyof typeof FlatList}> = ({flatListRef}) => {
     return <CalendarItem item={item} />;
   }, []);
   const {data} = useFirebaseFirestore();
+  const {user} = useFirebaseAuth();
   yearDays = yearDays.map((item: CalendarItemType, key) => {
     const taskCount = data.filter((_item: any) => {
-      return _item.date.toString() === item.toString();
+      return (
+        _item.date.toString() === item.toString() && _item.uId === user.uid
+      );
     }).length;
     return {key, date: item, taskCount};
   });
